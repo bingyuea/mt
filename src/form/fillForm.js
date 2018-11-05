@@ -61,11 +61,7 @@ class fillForm extends Component {
         }
       })
       LocalStorage.set('state', this.state)
-    }, 3000)
-  }
-  onReset = () => {
-    this.props.form.resetFields()
-    setTimeout(() => console.log(this.state), 0)
+    }, 300)
   }
 
   setStay = () => {
@@ -258,14 +254,6 @@ class fillForm extends Component {
         <List.Item>
           <Button type="primary" size="small" inline onClick={this.onSubmit}>
             提交
-          </Button>
-          <Button
-            size="small"
-            inline
-            style={{ marginLeft: '2.5px' }}
-            onClick={this.onReset}
-          >
-            清空
           </Button>
         </List.Item>
       </div>
