@@ -91,3 +91,8 @@ ul {
     width: 0;
   }
 }
+
+.demoTitle:before,
+.demoTitle:after {
+  border-bottom: none;
+}

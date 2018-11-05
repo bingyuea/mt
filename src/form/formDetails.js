@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { List } from 'antd-mobile'
+import moment from 'moment'
 
 const Item = List.Item
 const Brief = Item.Brief
@@ -7,31 +8,49 @@ class FormDetails extends Component {
   constructor(params) {
     super()
     this.state = {
-      hotel: {
-        name: '雅文主题酒店',
-        address: '汝阳县杜鹃大道与凤山南路交汇处南200米'
-      },
-      roomType: {
-        name: '海景时尚蜗居房',
-        checkInTime: '10-23',
-        leaveTime: '10-24',
-        stay: '1',
-        roomNum: '1',
-        otherPrototype: ['大床', '|', '含双早', '|', '有wifi和宽带']
-      },
-      orderInfo: {
-        person: '魏国庆',
-        tel: '18738449939',
-        inTime: '10月23日',
-        inDes: '14:00'
-      },
-      encourage: {
-        num: '55'
-      },
-      order: {
-        code: '927537252',
-        time: '2018-10-23 17:48'
+      state: {
+        hotel: {
+          name: '雅文主题酒店',
+          address: '汝阳县杜鹃大道与凤山南路交汇处南200米'
+        },
+        roomType: {
+          name: '海景时尚蜗居房',
+          checkInTime: '2018-10-23',
+          leaveTime: '2018-10-24',
+          stay: '1',
+          roomNum: '1',
+          otherPrototype: ['大床', '', '含双早', '', '有wifi和宽带']
+        },
+        orderInfo: {
+          person: '魏国庆',
+          tel: '18738449939',
+          inTime: '19:00',
+          inDes: '14:00'
+        },
+        encourage: {
+          num: '55'
+        },
+        order: {
+          code: '927537252',
+          time: '2018-10-23 17:48'
+        }
       }
+    }
+  }
+
+  componentDidMount() {
+    let queryState =
+      this.props.location.query && this.props.location.query.state
+    console.log(queryState)
+
+    if (queryState) {
+      this.setState({
+        state: queryState.state
+      })
+    } else {
+      this.props.history.push({
+        pathname: `/FillForm`
+      })
     }
   }
 
@@ -39,35 +58,50 @@ class FormDetails extends Component {
     return (
       <div className="formDetails">
         <Item multipleLine extra="查看商家" arrow="horizontal">
-          {this.state.hotel.name}
+          {this.state.state.hotel.name}
           <Brief style={{ whiteSpace: 'normal', width: 'calc(100% - 65px)' }}>
-            {this.state.hotel.address}
+            {this.state.state.hotel.address}
             {/* <div className="arrow">
               <i className="iconfont icon-jiantou" />
             </div> */}
           </Brief>
         </Item>
         <Item extra="查看房型" align="top" multipleLine arrow="horizontal">
-          {this.state.roomType.name}
+          {this.state.state.roomType.name}
           <Brief style={{ color: '#333', whiteSpace: 'normal' }}>
             入住:
-            <span>{this.state.roomType.checkInTime}</span>
+            <span>
+              {moment(this.state.state.roomType.checkInTime).format('MM-DD')}
+            </span>
             （今天） 离店：
-            <span>{this.state.roomType.leaveTime}</span>
-            （明天） 共<span>{this.state.roomType.stay}</span>晚
-            <span>{this.state.roomType.roomNum}</span>间
+            <span>
+              {moment(this.state.state.roomType.leaveTime).format('MM-DD')}
+            </span>
+            （明天） 共<span>{this.state.state.roomType.stay}</span>晚
+            <span>{this.state.state.roomType.roomNum}</span>间
           </Brief>
           <Brief>
-            {this.state.roomType.otherPrototype.map((item, index) => {
-              return (
-                <span
-                  className={index % 2 !== 0 ? 'verticalLine' : ''}
-                  key={index}
-                >
-                  {item}
-                </span>
-              )
-            })}
+            {Array.isArray(this.state.state.roomType.otherPrototype)
+              ? this.state.state.roomType.otherPrototype.map((item, index) => {
+                  return index % 2 !== 0 ? (
+                    <span className="verticalLine" key={index}>
+                      |
+                    </span>
+                  ) : (
+                    <span key={index}>{item}</span>
+                  )
+                })
+              : this.state.state.roomType.otherPrototype
+                  .split(',')
+                  .map((item, index) => {
+                    return index % 2 !== 0 ? (
+                      <span className="verticalLine" key={index}>
+                        |
+                      </span>
+                    ) : (
+                      <span key={index}>{item}</span>
+                    )
+                  })}
           </Brief>
         </Item>
         <div className="desBox">
@@ -92,24 +126,31 @@ class FormDetails extends Component {
           <ul className="list">
             <li className="item">
               <div className="item-left">入住人</div>
-              <div className="item-right">{this.state.orderInfo.person}</div>
+              <div className="item-right">
+                {this.state.state.orderInfo.person}
+              </div>
             </li>
             <li className="item">
               <div className="item-left">联系手机</div>
-              <div className="item-right">{this.state.orderInfo.tel}</div>
+              <div className="item-right">{this.state.state.orderInfo.tel}</div>
             </li>
             <li className="item">
               <div className="item-left">预计到店</div>
               <div className="item-right">
-                <span>{this.state.orderInfo.inTime}</span>
-                19:00之前（不影响酒店留房）
+                <span>
+                  {moment(this.state.state.roomType.checkInTime).format(
+                    'MM月DD日'
+                  )}
+                </span>
+                <span>{this.state.state.orderInfo.inTime}</span>
+                之前（不影响酒店留房）
               </div>
             </li>
             <li className="item">
               <div className="item-left">入住说明</div>
               <div className="item-right">
                 商家通常
-                <span>{this.state.orderInfo.inDes}</span>
+                <span>{this.state.state.orderInfo.inDes}</span>
                 开始办理入住，如需提早办理请联系商家
               </div>
             </li>
@@ -123,7 +164,7 @@ class FormDetails extends Component {
               <div className="item-left">美团瓜籽</div>
               <div className="item-right">
                 消费后预计获取
-                <span>{this.state.encourage.num}</span>
+                <span>{this.state.state.encourage.num}</span>
                 美团瓜籽（离店次日到账）
               </div>
             </li>
@@ -135,11 +176,13 @@ class FormDetails extends Component {
           <ul className="list">
             <li className="item">
               <div className="item-left">订单号</div>
-              <div className="item-right">{this.state.order.code}</div>
+              <div className="item-right">{this.state.state.order.code}</div>
             </li>
             <li className="item">
               <div className="item-left">下单时间</div>
-              <div className="item-right">{this.state.order.time}</div>
+              <div className="item-right">
+                {moment(this.state.state.order.time).format('YYYY-MM-DD HH:mm')}
+              </div>
             </li>
           </ul>
         </div>
