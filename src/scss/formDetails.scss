@@ -1,11 +1,30 @@
 .formDetails {
+
+  .header_title {
+    height: 44px;
+    padding: 0 15px;
+    line-height: 44px;
+    text-align: center;
+    background: rgb(248, 248, 248);
+
+    .left_arrow {
+      position: absolute;
+    }
+
+    .center_title {
+      font-size: 17px;
+    }
+  }
+
   .am-list-body {
     &::before {
       height: 0 !important;
     }
   }
+
   .am-list-item {
     padding-left: 0;
+
     .am-list-line {
       .am-list-content {
         color: $black;
@@ -13,39 +32,47 @@
         font-size: $ft-15;
         position: relative;
       }
+
       .am-list-extra {
         color: $blue;
         position: absolute;
         right: 25px;
         font-size: $ft-15;
       }
+
       .am-list-brief {
         color: $somber;
         font-size: $ft-12;
+
         .arrow {
           position: absolute;
           top: 8px;
           right: -8px;
+
           .iconfont {
             font-size: 20px;
           }
         }
       }
+
       .am-list-arrow {
         margin-right: -12px;
       }
     }
   }
+
   .desBox {
     position: relative;
     background: #fff;
     color: $blue;
     font-size: $ft-15;
+
     .iconBox {
       height: 100%;
       display: flex;
       line-height: 1.5px;
       position: relative;
+
       &:after {
         content: '';
         position: absolute;
@@ -63,16 +90,19 @@
         -webkit-transform: scaleY(0.5);
         transform: scaleY(0.5);
       }
+
       .left {
         flex: 1;
         text-align: center;
         align-self: center;
         position: relative;
+
         .iconText {
           height: 20px;
           padding: 12px 0;
           line-height: 20px;
         }
+
         &:after {
           content: '';
           position: absolute;
@@ -91,21 +121,25 @@
           transform: scaleX(0.5);
         }
       }
+
       .right {
         flex: 1;
         text-align: center;
         align-self: center;
       }
+
       .iconfont {
         margin-right: 10px;
       }
     }
   }
+
   .box {
-    margin-top: 15px;
+    margin-top: 10px;
     padding: 0 15px;
     background: #fff;
     position: relative;
+
     &:after {
       content: '';
       position: absolute;
@@ -123,6 +157,7 @@
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
     }
+
     &.no-border {
       &:after {
         content: '';
@@ -142,6 +177,7 @@
         transform: scaleY(0.5);
       }
     }
+
     &.border-top {
       &:after {
         content: '';
@@ -161,6 +197,7 @@
         transform: scaleY(0.5);
       }
     }
+
     .title {
       color: $black;
       font-size: $ft-15;
@@ -168,17 +205,21 @@
       width: 100%;
       box-sizing: border-box;
     }
+
     .list {
       padding: 15px 0;
       padding-top: 5px;
       line-height: 1.5;
+
       .item {
         display: flex;
+
         .item-left {
           width: 90px;
           color: $somber;
           font-size: $ft-14;
         }
+
         .item-right {
           flex: 1;
           font-size: $ft-14;

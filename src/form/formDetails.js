@@ -48,15 +48,21 @@ class FormDetails extends Component {
         state: queryState.state
       })
     } else {
-      this.props.history.push({
-        pathname: `/FillForm`
-      })
+      // this.props.history.push({
+      //   pathname: `/FillForm`
+      // })
     }
   }
 
   render() {
     return (
       <div className="formDetails">
+        <div className="header_title">
+          <div className="left_arrow">
+            <i className="iconfont icon-fanhui" />
+          </div>
+          <div className="center_title">待评价</div>
+        </div>
         <Item multipleLine extra="查看商家" arrow="horizontal">
           {this.state.state.hotel.name}
           <Brief style={{ whiteSpace: 'normal', width: 'calc(100% - 65px)' }}>
