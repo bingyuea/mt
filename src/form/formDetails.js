@@ -22,8 +22,8 @@ class FormDetails extends Component {
           otherPrototype: ['大床', '', '含双早', '', '有wifi和宽带']
         },
         orderInfo: {
-          person: '魏国庆',
-          tel: '18738449939',
+          person: '',
+          tel: '',
           inTime: '19:00',
           inDes: '14:00'
         },
@@ -53,12 +53,17 @@ class FormDetails extends Component {
       })
     }
   }
+  handleClick = () => {
+    this.props.history.push({
+      pathname: `/FillForm`
+    })
+  }
 
   render() {
     return (
       <div className="formDetails">
         <div className="header_title">
-          <div className="left_arrow">
+          <div className="left_arrow" onClick={this.handleClick}>
             <i className="iconfont icon-fanhui" />
           </div>
           <div className="center_title">待评价</div>

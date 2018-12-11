@@ -25,8 +25,8 @@ class fillForm extends Component {
           otherPrototype: ['大床', '', '含双早', '', '有wifi和宽带']
         },
         orderInfo: {
-          person: '魏国庆',
-          tel: '18738449939',
+          person: '',
+          tel: '',
           inTime: '19:00',
           inDes: '14:00'
         },
