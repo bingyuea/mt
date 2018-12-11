@@ -48,9 +48,9 @@ class FormDetails extends Component {
         state: queryState.state
       })
     } else {
-      // this.props.history.push({
-      //   pathname: `/FillForm`
-      // })
+      this.props.history.push({
+        pathname: `/FillForm`
+      })
     }
   }
 
