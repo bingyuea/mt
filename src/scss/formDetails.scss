@@ -249,4 +249,15 @@
       }
     }
   }
+  
+  .goldImg{
+    position: fixed;
+    bottom: 15px;
+    right: 25px;
+    width: 40px;
+    img{
+      width: 100%;
+      height: auto;
+    }
+  }
 }
