@@ -6,7 +6,7 @@
     line-height: 44px;
     text-align: center;
     background: rgb(248, 248, 248);
-    color: #333;
+    color: $black;
     position: relative;
 
     .left_arrow {
@@ -254,7 +254,7 @@
     position: fixed;
     bottom: 15px;
     right: 25px;
-    width: 45px;
+    width: 55px;
     img{
       width: 100%;
       height: auto;
