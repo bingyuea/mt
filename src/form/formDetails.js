@@ -85,7 +85,9 @@ class FormDetails
         </Item>
         <Item extra="查看房型" align="top" multipleLine arrow="horizontal">
           {this.state.state.roomType.name}
-          <Brief>
+          <Brief style={{
+            color: '#333',
+          }}>
             {Array.isArray(this.state.state.roomType.otherPrototype)
               ? this.state.state.roomType.otherPrototype.map((item,index) => {
                 return index%2 !== 0 ? (
@@ -109,7 +111,7 @@ class FormDetails
                 })}
           </Brief>
           <Brief style={{
-            color: '#333',
+            color: '#999',
             whiteSpace: 'normal'
           }}>
             入住:
