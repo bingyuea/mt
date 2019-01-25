@@ -330,7 +330,8 @@ module.exports = {
               /\.(js|mjs|jsx|ts|tsx)$/,
               /\.html$/,
               /\.json$/,
-              /\.scss$/
+              /\.scss$/,
+              /node_modules/
             ],
             loader: require.resolve('file-loader'),
             options: {

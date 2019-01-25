@@ -85,21 +85,6 @@ class FormDetails
         </Item>
         <Item extra="查看房型" align="top" multipleLine arrow="horizontal">
           {this.state.state.roomType.name}
-          <Brief style={{
-            color: '#333',
-            whiteSpace: 'normal'
-          }}>
-            入住:
-            <span>
-              {moment(this.state.state.roomType.checkInTime).format('MM-DD')}
-            </span>
-            （今天） 离店：
-            <span>
-              {moment(this.state.state.roomType.leaveTime).format('MM-DD')}
-            </span>
-            （明天） 共<span>{this.state.state.roomType.stay}</span>晚
-            <span>{this.state.state.roomType.roomNum}</span>间
-          </Brief>
           <Brief>
             {Array.isArray(this.state.state.roomType.otherPrototype)
               ? this.state.state.roomType.otherPrototype.map((item,index) => {
@@ -122,6 +107,21 @@ class FormDetails
                     <span key={index}>{item}</span>
                   )
                 })}
+          </Brief>
+          <Brief style={{
+            color: '#333',
+            whiteSpace: 'normal'
+          }}>
+            入住:
+            <span>
+              {moment(this.state.state.roomType.checkInTime).format('MM-DD')}
+            </span>
+            （今天） 离店：
+            <span>
+              {moment(this.state.state.roomType.leaveTime).format('MM-DD')}
+            </span>
+            （明天） 共<span>{this.state.state.roomType.stay}</span>晚
+            <span>{this.state.state.roomType.roomNum}</span>间
           </Brief>
         </Item>
         <div className="desBox">
